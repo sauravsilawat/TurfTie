@@ -1,0 +1,38 @@
+{
+  "expo": {
+    "name": "turftie",
+    "slug": "turftie",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "scheme": [
+      "Turftie"
+    ],
+    "userInterfaceStyle": "automatic",
+    "icon": "./assets/icon/turftielogo.png",
+    "splash": {
+      "image": "./assets/icon/logo.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/icon/turftielogo.png",
+        "backgroundColor": "#ffffff"
+      }
+    },
+    "web": {
+      "bundler": "metro",
+      "output": "static",
+      "favicon": "./assets/icon/turftielogo.png"
+    },
+    "plugins": [
+      "expo-router"
+    ],
+    "experiments": {
+      "typedRoutes": true
+    }
+  }
+}

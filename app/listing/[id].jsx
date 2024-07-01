@@ -56,7 +56,7 @@ const ListingDetail = () => {
                 <View className="mb-6 flex-row justify-between items-center">
                     <Text className="text-2xl font-bold">{turfDetail.title}</Text>
                     <View className="flex-row gap-2 items-center">
-                        <View className="justify-center items-center rounded-full w-7 h-7 bg-yellow-400"><Ionicons color='white' name='star' size={20} /></View>
+                        <View className="justify-center items-center rounded-full w-7 h-7 bg-[#ffd42a]"><Ionicons color='white' name='star' size={20} /></View>
                         <Text className="font-bold text-xl">{turfDetail.rating}</Text>
                     </View>
                 </View>
@@ -72,7 +72,7 @@ const ListingDetail = () => {
                         elevation: 8,
                     }}>
                     <View className="flex-row items-center gap-2">
-                        <View className="justify-center items-center rounded-full w-6 h-6 bg-yellow-400"><Ionicons color='white' name='location' size={16} /></View>
+                        <View className="justify-center items-center rounded-full w-6 h-6 bg-[#ffd42a]"><Ionicons color='white' name='location' size={16} /></View>
                         <Text className="text-base font-medium">Location</Text>
                     </View>
                     <Text className="mt-2 ml-7">{turfDetail.loc}</Text>
@@ -84,7 +84,7 @@ const ListingDetail = () => {
                             <TouchableOpacity
                                 key={index}
                                 onPress={() => setSelectedDate(index)}
-                                className={`px-4 py-[14px] bg-white my-2 mr-5 rounded-xl ${selectedDate === index ? "bg-yellow-400 text-white" : ""}`}
+                                className={`px-4 py-[14px] bg-white my-2 mr-5 rounded-xl ${selectedDate === index ? "bg-[#ffd42a] text-white" : ""}`}
                                 style={{
                                     shadowColor: '#6c6c6c',
                                     shadowOpacity: 0.1,
@@ -119,7 +119,7 @@ const ListingDetail = () => {
                     </View>
                 </View>
                 
-                <TouchableOpacity className="bg-[#0bc288] rounded-xl my-4 w-full h-16 items-center justify-center">
+                <TouchableOpacity className="bg-[#00B09D] rounded-xl my-4 w-full h-16 items-center justify-center">
                     <Text className="text-2xl font-bold text-white">Book Your Slot</Text>
                 </TouchableOpacity>
 

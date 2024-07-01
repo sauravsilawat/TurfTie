@@ -1,16 +1,23 @@
 import { View, Image, Text, TouchableOpacity } from 'react-native';
-import React from 'react';
+import React, { useContext } from 'react';
 import { ScrollView } from 'react-native-gesture-handler';
 import { Ionicons } from '@expo/vector-icons';
 
 import pic from '../../assets/image/profilpic.png';
+import { useAuth } from '../../AuthContext';
 
 export default function Profile() {
+
+  const { logout } = useAuth();
+  const handleLogout = async () => {
+    await logout();
+  }
+
   return (
-    <View className="bg-[#0bc288]">
+    <View className="bg-[#00B09D]">
       <View className="items-center py-10">
         <Image source={pic} className="w-[100px] h-[100px]"></Image>
-        <Text className="text-xl mt-4 font-semibold">Your Name</Text>
+        <Text className="text-xl mt-4 font-semibold">user</Text>
         <View className="flex-row gap-x-2 items-center mt-2">
           <Ionicons name='location' size={16}></Ionicons>
           <Text className="text-sm">Location</Text>
@@ -31,7 +38,7 @@ export default function Profile() {
           </View>
           <Ionicons name='caret-forward-outline' color={"orange"} size={26}></Ionicons>
         </TouchableOpacity>
-        <TouchableOpacity className="flex-row justify-between items-center w-4/5 mb-6">
+        <TouchableOpacity onPress={handleLogout} className="flex-row justify-between items-center w-4/5 mb-6">
           <View className="flex-row gap-2 items-center">
             <Ionicons name='log-out-outline' size={26}></Ionicons>
             <Text className="text-lg font-medium">Logout</Text>

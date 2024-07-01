@@ -8,7 +8,7 @@ export default function SelectSport() {
     return (
         <View className='flex-row items-center justify-between'>
             <TouchableOpacity onPress={() => setselectedSport(0)}>
-                <View className={`items-center m-2 p-2 rounded-lg ${selectedSport === 0 ? "bg-yellow-400" : "bg-white"}`} style={{
+                <View className={`items-center m-2 p-2 rounded-lg ${selectedSport === 0 ? "bg-[#ffd42a]" : "bg-white"}`} style={{
                     shadowColor: '#6c6c6c',
                     shadowOpacity: 0.1,
                     elevation: 10,
@@ -18,7 +18,7 @@ export default function SelectSport() {
                 <Text className='text-xs text-center'>football</Text>
             </TouchableOpacity>
             <TouchableOpacity onPress={() => setselectedSport(1)}>
-                <View className={`items-center m-2 p-2 rounded-lg ${selectedSport === 1 ? "bg-yellow-400" : "bg-white"}`} style={{
+                <View className={`items-center m-2 p-2 rounded-lg ${selectedSport === 1 ? "bg-[#ffd42a]" : "bg-white"}`} style={{
                     shadowColor: '#6c6c6c',
                     shadowOpacity: 0.1,
                     elevation: 10,
@@ -28,7 +28,7 @@ export default function SelectSport() {
                 <Text className='text-xs text-center'>cricket</Text>
             </TouchableOpacity>
             <TouchableOpacity onPress={() => setselectedSport(2)}>
-                <View className={`items-center m-2 p-2 rounded-lg ${selectedSport === 2 ? "bg-yellow-400" : "bg-white"}`} style={{
+                <View className={`items-center m-2 p-2 rounded-lg ${selectedSport === 2 ? "bg-[#ffd42a]" : "bg-white"}`} style={{
                     shadowColor: '#6c6c6c',
                     shadowOpacity: 0.1,
                     elevation: 10,
@@ -38,7 +38,7 @@ export default function SelectSport() {
                 <Text className='text-xs text-center'>basketball</Text>
             </TouchableOpacity>
             <TouchableOpacity onPress={() => setselectedSport(3)}>
-                <View className={`items-center m-2 p-2 rounded-lg ${selectedSport === 3 ? "bg-yellow-400" : "bg-white"}`} style={{
+                <View className={`items-center m-2 p-2 rounded-lg ${selectedSport === 3 ? "bg-[#ffd42a]" : "bg-white"}`} style={{
                     shadowColor: '#6c6c6c',
                     shadowOpacity: 0.1,
                     elevation: 10,
@@ -48,7 +48,7 @@ export default function SelectSport() {
                 <Text className='text-xs text-center'>swimming</Text>
             </TouchableOpacity>
             <TouchableOpacity onPress={() => setselectedSport(4)}>
-                <View className={`items-center m-2 p-2 rounded-lg ${selectedSport === 4 ? "bg-yellow-400" : "bg-white"}`} style={{
+                <View className={`items-center m-2 p-2 rounded-lg ${selectedSport === 4 ? "bg-[#ffd42a]" : "bg-white"}`} style={{
                     shadowColor: '#6c6c6c',
                     shadowOpacity: 0.1,
                     elevation: 10,

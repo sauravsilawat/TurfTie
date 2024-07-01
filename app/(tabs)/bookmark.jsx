@@ -34,7 +34,7 @@ const bookmark = () => {
                 {selected === item.key && item.status === "Upcoming" && (
                   <TouchableOpacity
                     activeOpacity={0.4}
-                    className="justify-center items-center bg-yellow-400 rounded-lg p-1 w-[40%] flex-row"
+                    className="justify-center items-center bg-[#ffd42a] rounded-lg p-1 w-[40%] flex-row"
                   >
                     <Text>Cancel</Text>
                   </TouchableOpacity>

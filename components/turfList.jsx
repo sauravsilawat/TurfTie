@@ -15,10 +15,10 @@ export default function TurfList() {
                         <TouchableOpacity key={item.key} className="relative">
                             <Image source={item.img} className="w-[165px] h-36 rounded-t-xl"></Image>
                             <View className="absolute flex-row p-3">
-                                <View className=" justify-center items-center rounded-full w-5 h-5 bg-yellow-400"><Ionicons color='white' name='star' size={14} /></View>
+                                <View className=" justify-center items-center rounded-full w-5 h-5 bg-[#ffd42a]"><Ionicons color='white' name='star' size={14} /></View>
                                 <Text className="ml-2 font-rblack text-white">{item.rating}</Text>
                             </View>
-                            <View className="p-2 bg-[#0bc288] rounded-b-xl">
+                            <View className="p-2 bg-[#00B09D] rounded-b-xl">
                                 <Text className="text-white font-extrabold text-base">{item.title}</Text>
                                 <Text className="text-white text-sm">{item.loc}</Text>
                             </View>

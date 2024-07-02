@@ -6,6 +6,9 @@ import { doc, getDoc, setDoc } from 'firebase/firestore'
 export const AuthContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
+    const [sportCat, setSportCat] = useState(null);
+    const [search, setSearch] = useState('');
+    const [filteredData, setFilteredData] = useState(null);
     const [user, setUser] = useState(null);
     const [isAuthenticated, setIsAuthenticated] = useState(false);
 
@@ -55,7 +58,7 @@ export const AuthContextProvider = ({ children }) => {
     }
 
     return (
-        <AuthContext.Provider value={{ user, setUser, isAuthenticated, login, logout, register }}>
+        <AuthContext.Provider value={{ user, setUser, isAuthenticated, login, logout, register, sportCat, setSportCat, search, setSearch, filteredData, setFilteredData }}>
             {children}
         </AuthContext.Provider>
     )

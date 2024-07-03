@@ -1,23 +1,56 @@
 import { View, Text } from 'react-native'
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Ionicons } from '@expo/vector-icons'
 import { SearchBar } from 'react-native-elements'
 import SelectSport from '../../components/selectSport'
 import TurfList from '../../components/turfList'
 import { ScrollView } from 'react-native-gesture-handler'
 import { AuthContext } from '../../AuthContext'
+import { doc, getDoc } from 'firebase/firestore'
+import { auth, db } from '../../firebaseConfig'
 
+const fetchBookingData = async () => {
+  const user = auth.currentUser;
+  if (!user) {
+    console.error("User not authenticated.");
+    return [];
+  }
+
+  try {
+    const userDocRef = doc(db, "users", user.uid);
+    const userDoc = await getDoc(userDocRef);
+    
+    if (userDoc.exists()) {
+      return userDoc.data(); // Return entire user data
+    } else {
+      console.error("No such document!");
+      return null;
+    }
+  } catch (error) {
+    console.error("Error fetching user's booking data:", error);
+    return null;
+  }
+};
 
 export default function home() {
-  const {search, setSearch} = useContext(AuthContext);
+  const {name, setName, search, setSearch} = useContext(AuthContext);
 
   const updateSearch = (search) => {
     setSearch(search);
   };
 
+  useEffect(() => {
+    const fetchAndSetBookingData = async () => {
+      const userData = await fetchBookingData();
+      setName(userData.username)
+    };
+
+    fetchAndSetBookingData();
+  }, []);
+
   return (
     <ScrollView className="bg-white h-[100%]  py-16">
-      <Text className='px-[6%] text-3xl font-medium '>Hello Saurav</Text>
+      <Text className='px-[6%] text-3xl font-medium '>Hello {name}</Text>
       <Text className="px-[6%]">Let's book your perfect playfield</Text>
 
       <View className='flex-row px-[6%] items-center gap-2 py-6'>

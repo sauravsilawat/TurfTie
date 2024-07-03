@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from 'firebase/auth';
 import { auth, db } from "./firebaseConfig"
-import { doc, getDoc, setDoc } from 'firebase/firestore'
+import { doc, setDoc } from 'firebase/firestore'
 
 export const AuthContext = createContext();
 
@@ -10,7 +10,10 @@ export const AuthContextProvider = ({ children }) => {
     const [search, setSearch] = useState('');
     const [filteredData, setFilteredData] = useState(null);
     const [user, setUser] = useState(null);
+    const [name, setName] = useState(null);
+    const [bookingAlert, setBookingAlert] = useState(false);
     const [isAuthenticated, setIsAuthenticated] = useState(false);
+    
 
     useEffect(() => {
         const unsub = onAuthStateChanged(auth, (user) => {
@@ -49,7 +52,8 @@ export const AuthContextProvider = ({ children }) => {
 
             await setDoc(doc(db, "users", response?.user?.uid), {
                 username,
-                userId: response?.user?.uid
+                userId: response?.user?.uid,
+                bookedTurfs: []
             });
             return { success: true, data: response?.user };
         } catch (e) {
@@ -58,7 +62,7 @@ export const AuthContextProvider = ({ children }) => {
     }
 
     return (
-        <AuthContext.Provider value={{ user, setUser, isAuthenticated, login, logout, register, sportCat, setSportCat, search, setSearch, filteredData, setFilteredData }}>
+        <AuthContext.Provider value={{ user, setUser, isAuthenticated, login, logout, register, sportCat, setSportCat, search, setSearch, filteredData, setFilteredData, bookingAlert, setBookingAlert, name, setName }}>
             {children}
         </AuthContext.Provider>
     )

@@ -27,7 +27,6 @@ export default function TurfList() {
                 querySnapshot.forEach(doc => {
                     datalist.push({ id: doc.id, ...doc.data() });
                 });
-                console.log("Turfs data:", datalist);
                 setTurfData(datalist);
                 setFilteredData(datalist); 
             } catch (error) {

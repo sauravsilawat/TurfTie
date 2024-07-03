@@ -1,6 +1,10 @@
-# Welcome to your Expo app 👋
+# App Screens 👋
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+![9](https://github.com/sauravsilawat/TurfTie/assets/96677760/7f216cd2-363d-4531-8e7e-ecc1ce776f52)
+
+![09 iPhone 14 Pro Clay Minimal Mockup1](https://github.com/sauravsilawat/TurfTie/assets/96677760/0b9b8a08-e9f6-404d-9fbe-324bb5f306f5)
+
+![12 iPhone 14 Pro Clay Minimal Mockup](https://github.com/sauravsilawat/TurfTie/assets/96677760/6d513116-0b44-4c1b-afc8-ea289a82716c)
 
 ## Get started
 

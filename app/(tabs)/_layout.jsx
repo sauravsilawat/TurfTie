@@ -1,5 +1,5 @@
-import React from 'react'
-import { Tabs } from 'expo-router'
+import React from 'react';
+import { Tabs } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 
 export default function _layout() {
@@ -7,12 +7,26 @@ export default function _layout() {
         <Tabs
             screenOptions={{
                 tabBarShowLabel: false,
-                tabBarActiveTintColor: 'white',
-                tabBarInactiveTintColor: "#929090",
+                tabBarActiveTintColor: 'orange', 
+                tabBarInactiveTintColor: "#CECDCD",
                 tabBarStyle: {
-                    backgroundColor: "#ffffff",
-                    height: 70,
+                    backgroundColor: "#333333",
+                    borderTopLeftRadius: 100,
+                    borderTopRightRadius: 100,
+                    borderBottomEndRadius: 100,
+                    borderBottomStartRadius: 100,
+                    marginBottom: 30,
+                    marginHorizontal: 60,
+                    shadowColor: "#000",
+                    shadowOffset: { width: 0, height: 2 },
+                    shadowOpacity: 0.25,
+                    shadowRadius: 3.84,
+                    height: 60,
                     paddingHorizontal: 20,
+                    position: 'absolute',
+                    bottom: 0,
+                    width: '70%'
+                    
                 },
                 headerStyle: {
                     height: 150,
@@ -26,9 +40,9 @@ export default function _layout() {
                 options={{
                     title: 'Home',
                     tabBarLabel: '',
-                    headerShown: "",
-                    tabBarIcon: () => (
-                        <Ionicons size={28} name={'home'} />
+                    headerShown: false,
+                    tabBarIcon: ({ color }) => (
+                        <Ionicons size={28} name={'home-outline'} color={color} />
                     ),
                 }}
             />
@@ -37,7 +51,7 @@ export default function _layout() {
                 options={{
                     title: 'Bookings',
                     tabBarLabel: '',
-                    headerShown: "Bookings",
+                    headerShown: true,
                     headerTitleAlign: 'center',
                     headerTitleStyle: {
                         fontWeight: 'semibold',
@@ -46,8 +60,8 @@ export default function _layout() {
                     headerStyle: {
                         shadowColor: '',
                     },
-                    tabBarIcon: () => (
-                        <Ionicons size={28} name={'bookmark'} />
+                    tabBarIcon: ({ color }) => (
+                        <Ionicons size={28} name={'bookmark-outline'} color={color} />
                     ),
                 }}
             />
@@ -56,12 +70,12 @@ export default function _layout() {
                 options={{
                     title: 'Profile',
                     tabBarLabel: '',
-                    headerShown: "",
-                    tabBarIcon: () => (
-                        <Ionicons size={28} name={'person'} />
+                    headerShown: false,
+                    tabBarIcon: ({ color }) => (
+                        <Ionicons size={28} name={'person-outline'} color={color} />
                     ),
                 }}
             />
         </Tabs>
-    )
+    );
 }

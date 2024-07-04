@@ -18,7 +18,7 @@ const fetchBookingData = async () => {
     const userDoc = await getDoc(userDocRef);
     
     if (userDoc.exists()) {
-      return userDoc.data(); // Return entire user data
+      return userDoc.data(); 
     } else {
       console.error("No such document!");
       return null;
@@ -30,14 +30,13 @@ const fetchBookingData = async () => {
 };
 
 const Bookmark = () => {
-  const { setName, bookingAlert } = useContext(AuthContext);
+  const { bookingAlert } = useContext(AuthContext);
   const [selected, setSelected] = useState(null);
   const [bookingData, setBookingData] = useState([]);
 
   useEffect(() => {
     const fetchAndSetBookingData = async () => {
       const userData = await fetchBookingData();
-      setName(userData.username)
       if (userData && userData.bookedTurfs) {
         const reversedBooking = [...userData.bookedTurfs].reverse();
         setBookingData(reversedBooking);

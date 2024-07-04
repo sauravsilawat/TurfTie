@@ -11,6 +11,7 @@ export default function Sign() {
   const emailRef = useRef("");
   const passwordRef = useRef("");
   const usernameRef = useRef("");
+  const profilepicRef = useRef("");
 
   const { login, register } = useAuth();
 
@@ -29,12 +30,12 @@ export default function Sign() {
   };
 
   const handleRegister = async () => {
-    if (!emailRef.current || !passwordRef.current || !usernameRef.current) {
+    if (!emailRef.current || !passwordRef.current || !usernameRef.current ) {
       Alert.alert('Sign Up', "Please fill all the fields");
       return;
     }
 
-    let response = await register(emailRef.current, passwordRef.current, usernameRef.current);
+    let response = await register(emailRef.current, passwordRef.current, usernameRef.current, profilepicRef);
 
     console.log('got result:', response);
     if (!response.success) {
@@ -64,6 +65,12 @@ export default function Sign() {
           onChangeText={(value) => passwordRef.current = value}
           secureTextEntry
         />
+        {!isLogin && <TextInput
+          className="bg-white border border-gray-300 rounded-lg px-4 py-2"
+          placeholder="Enter your profile link"
+          onChangeText={(value) => profilepicRef.current = value}
+          autoCapitalize="none"
+        />}
         <TouchableOpacity
           className="p-2 bg-[#00B09D] items-center justify-center rounded-lg"
           onPress={() => {

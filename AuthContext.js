@@ -10,7 +10,8 @@ export const AuthContextProvider = ({ children }) => {
     const [search, setSearch] = useState('');
     const [filteredData, setFilteredData] = useState(null);
     const [user, setUser] = useState(null);
-    const [name, setName] = useState(null);
+    const [cities, setCities] = useState("Anywhere");
+    const [userData, setUserData] = useState(null);
     const [bookingAlert, setBookingAlert] = useState(false);
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     
@@ -46,13 +47,14 @@ export const AuthContextProvider = ({ children }) => {
         }
     }
 
-    const register = async (email, password, username) => {
+    const register = async (email, password, username, profilepic) => {
         try {
             const response = await createUserWithEmailAndPassword(auth, email, password);
 
             await setDoc(doc(db, "users", response?.user?.uid), {
                 username,
                 userId: response?.user?.uid,
+                profile: profilepic,
                 bookedTurfs: []
             });
             return { success: true, data: response?.user };
@@ -62,7 +64,7 @@ export const AuthContextProvider = ({ children }) => {
     }
 
     return (
-        <AuthContext.Provider value={{ user, setUser, isAuthenticated, login, logout, register, sportCat, setSportCat, search, setSearch, filteredData, setFilteredData, bookingAlert, setBookingAlert, name, setName }}>
+        <AuthContext.Provider value={{ user, setUser, isAuthenticated, login, logout, register, sportCat, setSportCat, search, setSearch, filteredData, setFilteredData, bookingAlert, setBookingAlert, userData, setUserData, cities, setCities }}>
             {children}
         </AuthContext.Provider>
     )

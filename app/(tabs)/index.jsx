@@ -1,4 +1,4 @@
-import { View, Text } from 'react-native'
+import { View, Text, Modal, FlatList, TouchableOpacity, TouchableWithoutFeedback } from 'react-native'
 import React, { useContext, useEffect, useState } from 'react'
 import { Ionicons } from '@expo/vector-icons'
 import { SearchBar } from 'react-native-elements'
@@ -8,6 +8,13 @@ import { ScrollView } from 'react-native-gesture-handler'
 import { AuthContext } from '../../AuthContext'
 import { doc, getDoc } from 'firebase/firestore'
 import { auth, db } from '../../firebaseConfig'
+
+const place = [
+  "Anywhere",
+  "Kolkata",
+  "New Delhi",
+  "Mumbai"
+]
 
 const fetchBookingData = async () => {
   const user = auth.currentUser;
@@ -19,7 +26,7 @@ const fetchBookingData = async () => {
   try {
     const userDocRef = doc(db, "users", user.uid);
     const userDoc = await getDoc(userDocRef);
-    
+
     if (userDoc.exists()) {
       return userDoc.data(); // Return entire user data
     } else {
@@ -33,7 +40,8 @@ const fetchBookingData = async () => {
 };
 
 export default function home() {
-  const {name, setName, search, setSearch} = useContext(AuthContext);
+  const { userData, setUserData, search, setSearch, cities, setCities } = useContext(AuthContext);
+  const [modalVisible, setModalVisible] = useState(false);
 
   const updateSearch = (search) => {
     setSearch(search);
@@ -41,22 +49,59 @@ export default function home() {
 
   useEffect(() => {
     const fetchAndSetBookingData = async () => {
-      const userData = await fetchBookingData();
-      setName(userData.username)
+      const Data = await fetchBookingData();
+      setUserData(Data)
     };
 
     fetchAndSetBookingData();
   }, []);
 
+  const handleCitySelect = (city) => {
+    setCities(city);
+    setModalVisible(false);
+  };
+
   return (
     <ScrollView className="bg-white h-[100%]  py-16">
-      <Text className='px-[6%] text-3xl font-medium '>Hello {name}</Text>
+      <Text className='px-[6%] text-3xl font-medium '>Hello {userData && userData.username}</Text>
       <Text className="px-[6%]">Let's book your perfect playfield</Text>
 
-      <View className='flex-row px-[6%] items-center gap-2 py-6'>
-        <Ionicons name='location-sharp' size={20} />
-        <Text className='text-2xl'>Indore</Text>
-        <Ionicons name='caret-down-outline' size={16} />
+      <View>
+        <TouchableOpacity
+          onPress={() => setModalVisible(!modalVisible)}
+          className='flex-row px-[6%] items-center gap-2 py-6'
+        >
+          <Ionicons name='location-sharp' size={20} />
+          <Text className='text-2xl'>{cities}</Text>
+          <Ionicons name='caret-down-outline' size={16} />
+        </TouchableOpacity>
+
+        <Modal
+          transparent={true}
+          visible={modalVisible}
+          onRequestClose={() => setModalVisible(false)}
+        >
+          <TouchableWithoutFeedback onPress={() => setModalVisible(false)}>
+            <View className='flex-1 justify-center items-center bg-[rgba(0,0,0,0.5)]'>
+              <TouchableWithoutFeedback>
+                <View className='w-4/5 bg-white rounded-lg p-5 shadow-lg'>
+                  <FlatList
+                    data={place}
+                    keyExtractor={(item) => item}
+                    renderItem={({ item }) => (
+                      <TouchableOpacity
+                        className='py-3 border-b border-gray-300'
+                        onPress={() => handleCitySelect(item)}
+                      >
+                        <Text className='text-lg'>{item}</Text>
+                      </TouchableOpacity>
+                    )}
+                  />
+                </View>
+              </TouchableWithoutFeedback>
+            </View>
+          </TouchableWithoutFeedback>
+        </Modal>
       </View>
       <View className="px-6">
         <SearchBar

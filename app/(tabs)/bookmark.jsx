@@ -6,6 +6,8 @@ import { doc, getDoc, updateDoc, arrayRemove } from 'firebase/firestore';
 import { format } from 'date-fns';
 import { AuthContext } from '../../AuthContext';
 
+import nodata from '../../assets/image/nodata.png'
+
 const fetchBookingData = async () => {
   const user = auth.currentUser;
   if (!user) {
@@ -77,6 +79,10 @@ const Bookmark = () => {
     LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
     setSelected(selected === key ? null : key);
   };
+
+  if(bookingData.length === 0){
+    return <Image source={nodata} className=" mx-auto mt-28 w-[300px] h-[380px]"></Image>
+  }
 
   return (
     <FlatList

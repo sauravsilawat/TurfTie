@@ -82,9 +82,9 @@ export default function home() {
           onRequestClose={() => setModalVisible(false)}
         >
           <TouchableWithoutFeedback onPress={() => setModalVisible(false)}>
-            <View className='flex-1 justify-center items-center bg-[rgba(0,0,0,0.5)]'>
+            <View className='flex-1 justify-center items-start ml-12 bg-[rgba(0,0,0,0.5)]'>
               <TouchableWithoutFeedback>
-                <View className='w-4/5 bg-white rounded-lg p-5 shadow-lg'>
+                <View className='w-3/5 bg-gray-100 top-[-110px] rounded-lg p-5 shadow-lg'>
                   <FlatList
                     data={place}
                     keyExtractor={(item) => item}
